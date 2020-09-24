@@ -1,0 +1,772 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+    display: flex;
+    scroll-behavior: smooth;
+}
+
+hr{
+    width: 90%;
+    /* height: 1px; */
+}
+
+.pointer{
+    cursor: pointer;
+}
+/*----- these are used to color fonts ------------*/
+.text-grey{
+    color: lightgrey;
+}
+
+.text-dark-grey{
+    color: gray;
+}
+/* ----------------------------------------------- */
+/* ---------------------------------------Left section stars form here--------------------- */
+/* -------------------------------it contains tags and user account info------------------- */
+#left-section{
+    width: 21vw;
+    min-width: 280px;
+    height: 100vh;
+    background : linear-gradient(royalblue,#060696);
+    color: white;
+    box-sizing: border-box;
+    position: relative;
+    overflow: scroll;
+}
+/* ---------user profile------------- */
+#profile{
+    width: 21.5vw;
+    min-width: 280px;
+    position: fixed;
+    height: 13vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    background-color: #3e6ad6;
+    z-index: 2;
+}
+/* user image */
+#profile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#user-name{
+    margin-left: -30px;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+/* used to give change user options */
+#dots-three{
+    font-size: 1.5rem;
+}
+/* accoutn options for users */
+#user-account-options{
+    position: absolute;
+    width: 140px;
+    height: 50px;
+    right: 3.5vw;
+    top: 8vh;
+    border: 1px solid white;
+    display: none;
+}
+/* button like change user or sign out */
+#user-account-options button{
+    width: 100%;
+    height: 50%;
+    border: none;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* -------user profile ends here-------- */
+/* ---this section contains the tags----- */
+#categories{
+    margin-top: 13vh;
+    overflow: scroll;
+    margin-bottom: 12vh;
+}
+
+#tag-container{
+    height:42vh;
+    overflow-y: scroll;
+    
+}
+/* scroll bar is not shown */
+::-webkit-scrollbar {
+    width: 0.1px;
+}
+/* categories  */
+#left-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    /* margin-bottom: 20px; */
+    padding-left: 30px;
+    padding-right: 30px;
+}
+/* each tag */
+.tag{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    text-transform: capitalize;
+    padding-left: 40px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+
+.tag span{
+    color: lightgrey;
+}
+
+.tag-count{
+    margin-right: 10px;
+    width: 30px;
+    height: 20px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+/* trash bin */
+#trash-tag{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: rgb(226, 223, 223);
+
+}
+
+#trash-container{
+    display: none;
+}
+/* form to add new tag */
+#add-tags{
+    width:21.5vw;
+    min-width: 280px;
+    box-sizing: border-box;
+    padding-right: 30px;
+    padding-left: 30px;
+    height: 12vh;
+    background-color: #214da0;
+    position: fixed;
+    bottom: 0;
+}
+
+/* input which wil show up to take tag input */
+/* in future blinking effect will be added to it */
+#add-tag-input{
+    width: 100%;
+    height: 30px;
+    color: white;
+    background: transparent;
+    border: 2px solid lightgray;
+    outline: none;
+    font-size: 18px;
+    text-transform: capitalize;
+    display: none;
+    margin-top: 5px;
+}
+/* above input feild will be shown when this  */
+/* button is clicked */
+#add-tag-button{
+    background: none;
+    color: white;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 16px;
+    position: absolute;
+    bottom: 10px;
+    left: 4vw;
+    outline: none;
+}
+/* ------------------------------Left section ends here------------------------------------- */
+/* ------------------------------center section stars here---------------------------------- */
+/* -----------it contains add task and document format options----------------------------- */
+#center-section{
+    width: 28vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: rgb(246,247,251);
+    min-width: 360px;
+}
+/* the app heading */
+#center-heading{
+    padding: 8px 40px;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#website-icon{
+    width: 40px;
+    height: 40px;
+}
+/* total no. of tasks */
+#list-count{
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+/* serach icon */
+#list-search{
+    margin-left: 150px;
+    cursor: pointer;
+}
+/* -------search form------- */
+/* its desabled */
+#search-form{
+    padding-left: 40px;
+    padding-right: 40px;
+    position: relative;
+    display: none;
+    margin: 0;
+}
+
+#search-form input{
+    width: 100%;
+    height: 45px;
+    margin-top: 18px;
+    font-size: 18px;
+    border-radius: 8px;
+    color: rgb(179, 179, 179);
+    border: none;
+    padding-left: 15px;
+    background-color: #eaeaea;
+    outline: none;
+    cursor: not-allowed;
+}
+
+::placeholder{
+    color: rgb(179, 179, 179);
+}
+
+#search-button{
+    position:absolute;
+    right: 40px;
+    top: 26px;
+    background-color: transparent;
+    border: none;
+    cursor: not-allowed;
+}
+/* -----search ends here------- */
+/* document format options */
+#text-options{
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+/* ------------add task form -------------*/
+
+#add-task{
+    padding-left: 40px;
+    padding-right: 40px;
+    height: auto;
+    position: relative;
+}
+/* used to design all input except massage box */
+#add-task input{
+    width: 100%;
+    height: 45px;
+    margin-top: 18px;
+    font-size: 18px;
+    border-radius: 8px;
+    color: rgb(73, 101, 144);;
+    border: none;
+    padding-left: 15px;
+    background-color: #eaeaea;
+    outline: none;
+}
+/* as massage box is textarea its designed here */
+#massage{
+    width: 100%;
+    margin-top: 18px;
+    font-size: 18px;
+    border-radius: 8px;
+    color: rgb(73, 101, 144);;
+    border: none;
+    padding-left: 15px;
+    background-color: #eaeaea;
+    outline: none;
+    height: 140px;
+    resize: none;
+}
+/* select class for select tag and color */
+.div-shower{
+    width: 40%;
+    height: 35px;
+    margin-top: 20px;
+    font-size: 16px;
+    background: #eaeaea;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: grey;
+    outline: none;
+    padding-left: 5px;
+}
+/* for select tag */
+/* color tag is handled by js */
+#tag-select-div-shower{
+    margin-right: 18%;
+    background-color: darkcyan;
+    padding-left: 5px;
+}
+/* down arrow */
+.down-arrow-for-select{
+    position: absolute;
+    right: 58%;
+    background: darkcyan;
+    color: white;
+    top: 150px;
+    outline: none;
+    
+}
+#down-arrow-for-select-colors{
+    right: 45px;
+    background: grey;
+}
+/* add task button */
+#add-task-div-button{
+    width: 100%;
+    height: 50px;
+    background-color:royalblue;
+    outline: none;
+    border: none;
+    display: flex;
+    color: white;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8%;
+    border-radius: 10px;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+}
+/* ------add task form ends here--------- */
+/* ----------------------------------center section ends here------------------------------ */
+
+/* ---------------------------------righ section stars here-------------------------------- */
+/* ---------------------------------it contains all the task cards------------------------- */
+
+/* animation is used when page loads and right section comees from top to bottom */
+/* it kind of gives bounce effect */
+@keyframes topToBottom{
+    from{
+        transform: translateY(-100vh);
+    }
+    50%{
+        transform: translateY(0vh);
+    }
+    75%{
+        transform: translateY(-30vh);
+    }
+    85%{
+        transform: translateY(0vh);
+    }
+    93%{
+        transform: translateY(-10vh);
+    }
+    to{
+        transform: translateY(0vh);
+    }
+}
+
+/* animated for color balls when due date is near */
+@keyframes fadeInOut{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+/* fadeInOut-class is used to add or remove blinking effect to the colors dots */
+.fadeInOut-class{
+    animation: fadeInOut 1s ease-in-out infinite;
+}
+
+/* right section */
+/* default image is background1 */
+/* background is added using js */
+/* but this is a fail safe */
+#right-section{
+    width: 51vw;
+    height: 100vh;
+    padding-left: 40px;
+    padding-right: 20px;
+    animation: topToBottom 1s ease-in-out;
+    background-image: url(/images/background1.jpg);
+    background-size: cover;
+    background-position: right;
+}
+/*shower is common class for all tags task display */
+.shower{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+/* this is used to show recents on page loads */
+
+#recents-shower{
+    display: flex;
+}
+
+/* #Personal-shower{
+    display: none;
+}
+
+#Work-shower{
+    display: none;
+}
+#Home-shower{
+    display: none;
+}
+#Others-shower{
+    display: none;
+}
+#trash-shower{
+    display: none;
+} */
+/* this is the one task card */
+.one-to-do{
+    border: 2px solid gray;
+    width: 20vw;
+    min-width: 265px;
+    min-height: 165px;
+    height: 25vh;
+    margin-right: 14px;
+    border-radius: 25px;
+    margin-top: 20px;
+    position: relative;
+    padding-top: 20px;
+    /* overflow: hidden; */
+    background-color: white;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 
+                0 6.7px 5.3px rgba(0, 0, 0, 0.048), 
+                0 0.5px 0px rgba(0, 0, 0, 0.06), 
+                0 22.3px 9.9px rgba(0, 0, 0, 0.072), 
+                0 3.8px 2.4px rgba(0, 0, 0, 0.086), 
+                0 10px 12px rgba(0, 0, 0, 0.12);
+}
+/* if task is missed */
+.task-missed-div{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: grey;
+    color: white;
+    width: 70px;
+    text-align: center;
+    height: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: none;
+}
+/* taskcolor */
+/* color is added using js */
+/* black color is fail safe */
+.task-color{
+    width: 20px;
+    height: 20px;
+    left: 20px;
+    box-sizing: border-box;
+    background-color: black;
+    position: absolute;
+    z-index: 3;
+    border-radius: 50%;
+}
+/* below is task tag */
+.task-value{
+    position: absolute;
+    left: 50px;
+    margin-top: 2px;
+}
+/* due date for that task */
+.task-date{
+    position: absolute;
+    right: 10px;
+    margin-top: 2px;
+}
+/* contains task options */
+/* like checkbox, edit, delete */
+/* its hidden */
+/* its shown when we hove hover task */
+.task-options-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: gray;
+    overflow: hidden;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+
+.task-options-bottom span{
+    color: white;
+    cursor: pointer;
+}
+/* contains the task and extra massage */
+.task-item-container{
+    width: 100%;
+    position: absolute;
+    top: 55px;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+/* task heading */
+.task-item{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.task-massage-container{
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.task-massage{
+    font-size: 16px;
+}
+/* pin the container to top */
+/* we are using position absolute to fix it to top right corner */
+.pin-container{
+    width: 28px;
+    height: 28px;
+    background-color: black;
+    border-radius: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    right: -7px;
+    top: -7px;
+}
+
+/* to show task-options */
+.one-to-do:hover .task-options-bottom{
+    height: 30px;
+    transition: all 0.4s ease-in-out;
+}
+/* delete */
+.delete:hover{
+    color: red;
+    transition: all 0.3s ease-in-out;
+}
+.restore:hover{
+    color: rgb(255, 189, 6);
+    transition: all 0.3s ease-in-out;
+
+}
+/* edit */
+.edit:hover{
+    color: greenyellow ;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+/* extra classes */
+/* used for toogleing in js */
+.toogle-bold{
+    font-weight: bold;
+    color: black;
+}
+
+.toogle-italics{
+    font-style: italic;
+    color: black;
+}
+
+.toogle-underline{
+    text-decoration: underline;
+    color: black;
+}
+
+.toogle-left-align{
+    text-align: left;
+    
+}
+
+.toogle-center-align{
+    text-align: center;
+    
+}
+
+.toogle-right-align{
+    text-align: right;
+    
+}
+
+.toogle-text-cut{
+    text-decoration: line-through;
+}
+
+.pin-class{
+    color: blue;
+}
+
+@keyframes rotate3d{
+    from{
+        transform: rotateX(0deg);
+    }
+    50%{
+        transform: rotateX(360deg);
+    }
+    to{
+        transform: rotateX(0deg);
+   }
+}
+
+@keyframes goLeft{
+    from{
+        transform: translateX(0) rotateZ(0deg);
+    }
+    50%{
+        transform: rotateZ(-180deg);
+    }
+    to{
+        transform: translateX(-70px) ;
+    }
+}
+
+@keyframes goRight{
+    from{
+        transform: translateX(0) ;
+        width: 0;
+    }
+    65%{
+        width: 0;
+    }
+    to{
+        width: 90px;
+        transform: translateX(40px) ;
+    }
+}
+
+
+
+
+
+/* contact developer  */
+/* blured div to give blured background to contact developer */
+#blured-div{
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    backdrop-filter: blur(2px);
+    position: fixed;
+    display: none;
+}
+
+#contact-developer{
+    width: 300px;
+    height: 400px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    /* border: 1px solid ; */
+    border-radius: 10px;
+    background-color: wheat;
+    z-index: 3;
+    padding: 5px 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: none;
+}
+
+.social{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 70px;
+    background-color: whitesmoke;
+    z-index: 4;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    background: #eee;
+  background-image:
+    linear-gradient(45deg, rgba(0,0,0, .25) 25%, transparent 0, transparent 75%, rgba(0,0,0, .25) 0),
+    linear-gradient(45deg, rgba(0,0,0, .25) 25%, transparent 0, transparent 75%, rgba(0,0,0, .25) 0);
+
+  background-position: 0 0, 3px 3px, 3px 3px, 6px 6px;
+  background-size: 6px 6px;
+   
+}
+.social-image{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 100px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.social-contact{
+    text-decoration: none;
+    width: 0px;
+    overflow: hidden;
+    margin-left: 30px;
+    color: blueviolet;
+    position: absolute;
+    background-color: whitesmoke;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.go-left-class{
+    animation: goLeft 1.5s ease-in-out ;
+    transform: translateX(-70px);
+}
+
+.go-right-class{
+    animation: goRight 1.5s ease-in-out ;
+    transform: translateX(40px);
+    width: auto;
+}

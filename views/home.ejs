@@ -1,0 +1,309 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <meta
+        name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- google material icons are used in this project-->
+        <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Google fonts are imported but not used till date -->
+        <link
+        href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
+        <!-- fevicon -->
+        <link rel="icon" href="/images/icon.png" type="image/gif" sizes="16x16">
+        <!-- main css file -->
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+
+        <!-- left sectin of page contains the folder structure and profile -->
+
+        <div id="left-section">
+            <!-- profile section contains the user profile -->
+            <!-- currently its dumy but functionallity will be added in future versions -->
+            <div id="profile">
+                <img src="/images/profile1.jpg" alt="profile">
+                <span id="user-name" class="text-grey">Lovekesh</span>
+                <span class="material-icons text-grey pointer" id="dots-three">more_vert</span>
+                <div id="user-account-options">
+                    <button style="border-bottom: 1px solid black;">
+                        <span class="material-icons">login</span>Sign out</button>
+                    <button id="show-developer-contact">Contact me</button>
+                </div>
+            </div>
+            <!-- catergories contains the tag list  -->
+            <!-- it been updated dynamically -->
+            <div id="categories">
+                <div id="left-heading" class="pointer">
+                    
+                    <h4>CATEGORIES</h4>
+                    <span class="material-icons">list</span>
+                </div>
+                <div id="tag-container">
+                    <!-- using for loop to traverse throught tags in db and printig them -->
+                    
+                    <% for(let i=0;i<tags_list.length;i++) { %>
+
+                        <div class="tag">
+                            <span class="tag-name"><%= tags_list[i].tag %></span>
+                            
+                            <span class=" tag-count" id="task-count"><%= tags_list[i].count %></span>
+                            
+
+                        </div>
+
+                    <% } %>
+                </div>
+                <hr>
+                <!-- this is the trash bin all deleted tasks will show here -->
+                <div id="trash-tag" class="pointer">
+                    <h3>Deleted</h3>
+                    <span class="material-icons">delete</span>
+                </div>
+                <!-- trash container will show the deletd tasks -->
+                <!-- there are 3 section, all will show all tasks, finished will show tasks that are finnished -->
+                <!-- unfinised will show unfinished tasks -->
+                <div id="trash-container">
+                    <div class="tag">
+                        <span class="tag-name">All</span>
+                            
+                        <span class="tag-count " id="trash-total-count">0</span>
+                    </div>
+                    <div class="tag">
+                        <span class="tag-name">Finished</span>
+                            
+                        <span class=" tag-count" id="trash-finished-count">0</span>
+                    </div>
+                    <div class="tag">
+                        <span class="tag-name">Unfinished</span>
+                            
+                        <span class=" tag-count" id="trash-unfinished-count">0</span>
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+            <!-- this is the button form adding more tags  -->
+            <!-- input div is hidden default and can be accesed by clicking add tag button -->
+            <!-- in future input area will blink when shown -->
+            <div id="add-tags" >
+                <form action="/add-tags" method="POST">
+                    <input type="text" name="tag" id="add-tag-input" autocomplete="off" required="true">
+                    <button type="submit" id="add-tag-button" class="pointer">
+                        <span class="material-icons text-grey">add</span>Add Tag</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- this is the center part -->
+        <!-- it contains the option to add task -->
+        <!-- and contans most of design flow controls -->
+        <div id="center-section">
+            <div id="center-heading">
+                <img src="/images/icon.png" alt="" id="website-icon">
+                <h2 style="margin-left: -30%;">To Do List</h2>
+                <!-- below span is to change background of right section -->
+                <span class="material-icons text-dark-grey" id="theme-change-button" style="cursor: pointer;">wallpaper</span>
+            </div>
+            <!-- list count is the total length of tasks -->
+            <div id="list-count">
+                <span class="text-dark-grey " id="total-task-count"><%= to_do_list.length %> Notes
+                    </span>
+                    <!-- below icon will open search bar -->
+                    <!-- search is currently not working and is disabled by default -->
+                    <!-- will be added when i learn to make synchronus calls to db -->
+                <span class="material-icons text-dark-grey" id="list-search">search</span>
+                
+                <span class="material-icons text-dark-grey" >import_export</span>
+            </div>
+            <!-- this is different document formating options  -->
+            <!-- names are self explanatory -->
+            <div id="text-options">
+                <span class="material-icons text-dark-grey pointer" id="make-text-bold">format_bold</span>
+                <span class="material-icons text-dark-grey pointer" id="make-text-italic">format_italic</span>
+                <span class="material-icons text-dark-grey pointer" id="make-text-underline">format_underline</span>
+                <span class="material-icons text-dark-grey pointer" id="make-text-left">format_align_left</span>
+                <span class="material-icons text-dark-grey pointer" id="make-text-center">format_align_center</span>
+                <span class="material-icons text-dark-grey pointer" id="make-text-right">format_align_right</span>
+            </div>
+            <!-- below div is display none by default  -->
+            <!-- will be shown when search icon above is clicked -->
+            <form id="search-form">
+                <input type="text" name="search-query" placeholder="Search is not available" disabled>
+                <button id="search-button" disabled>
+                    <span class="material-icons text-dark-grey">search</span>
+                </button>
+            </form>
+            <!-- this is the add task div -->
+            <!-- down arrow for select are used because down arrow in default select are  -->
+            <!-- too much right so custom down arrow are placed on top of them -->
+            <!-- we are using position absolute to set there  position but that might break -->
+            <!-- in larger screen (more than  normal laptop size) -->
+            <!-- task-id-for-update is diaplay none and is used to send id in -->
+            <!-- update task functionality -->
+            <!-- when update is called form action is changed to /update-task and id of that elem id copied into -->
+            <!-- the task-id-for-update to seach for that elem in db -->
+            <!-- so that we can use same form for both update and new task -->
+            <!-- item is the heading of task || massage is the extra info -->
+            <!-- selects feild are for selecting tags and colors -->
+            <!-- in future custom colors will be added  too -->
+            <form action="/add-task" method="POST" id="add-task">
+                <input type="text" name="item" placeholder="Enter Task...." id="task-input" maxlength="50" required autocomplete="off">
+                <input type="date" name="date" id="task-date">
+                <select name="tag" id="tag-select-div-shower" class="div-shower">
+                    <% for(let i=0;i<tags_list.length;i++) { %>
+                        <option value="<%= tags_list[i].tag %>"><%= tags_list[i].tag %></option>
+                    <% } %>
+                </select>
+                <span class="material-icons down-arrow-for-select" id="down-arrow-for-select-tags">keyboard_arrow_down</span>
+                <select name="color" id="color-select-div-shower" class="div-shower">
+                    <% for(let i=0;i<colors_list.length;i++) { %>
+                        <option value="<%= colors_list[i] %>"><%= colors_list[i] %></option>
+                    <% } %>
+                </select>
+                <span class="material-icons down-arrow-for-select" id="down-arrow-for-select-colors">keyboard_arrow_down</span>
+                <textarea name="massage" type="text" name="item-info" maxlength="100" placeholder="Enter more info here..." id="massage"></textarea>
+                <input type="text" name="id" id="task-id-for-update" style="display: none;">
+                <button type="submit" id="add-task-div-button" class="pointer">
+                    <span class="material-icons" style="margin-right: 15px;">add</span>Add Task</button>
+            </form>
+
+
+        </div>
+        <!-- this is right section of page -->
+        <!-- it contains all the tasks -->
+        <!-- first lop is used to traverse throught all the tags -->
+        <!-- the second loop selects the tags that match above tag -->
+        <!-- for example if j is 1 then tag will be personal -->
+        <!-- then second loop traverse throught all the tasks and prints only -->
+        <!-- those who have tag personal this is basically a filter function -->
+        <!-- abc class is used to print color of that task so that we can use it in javascript -->
+        <!-- to give colors to tasks and its hidden so user can't see it -->
+        <!-- bcd function is same except it prints id which is used to send in update task function -->
+        <!-- we are using display none and flex propertise here to show diffrent shower class -->
+        <!-- the no. of shower div is equal to no. of tags -->
+        <div id="right-section">
+            
+            <% for(let j=0;j<tags_list.length;j++){ %>
+
+                <div id="<%= tags_list[j].tag %>-shower" class="shower">
+                    <% for(let i=to_do_list.length-1;i>=0;i--) { %>
+                        <% if((to_do_list[i].tag ==  tags_list[j].tag || j==0) && to_do_list[i].trashed==false){ %> 
+                            <span class="abc" style="display: none" ;><%= to_do_list[i].color %></span>
+                            <span class="bcd" style="display: none" ;><%= to_do_list[i].id %></span>
+                            <!-- one-to-do is container for each task -->
+                            <!-- tag color div is to show the color dot in each task -->
+                            <!-- it takes data(or innerText()) from abc class ans shows that color-->
+                            <div class="one-to-do">
+                                <div class="task-missed-div">
+                                    <span>Missed</span>
+                                </div>
+                                <div class="task-color"></div>
+                                <div class="pin-container pointer">
+                                    <span class="material-icons pin">push_pin</span>
+                                </div>
+                                <div class="task-item-container">
+                                    <span class="task-item"><%= to_do_list[i].item %></span><br>
+        
+                                    <span class="task-massage text-dark-grey"><%= to_do_list[i].massage %></span>
+                                </div>
+                                
+                                <span class="task-value text-dark-grey"><%= to_do_list[i].tag %></span>
+                                <span class="task-date text-dark-grey"><%= to_do_list[i].date %></span>
+
+                                <!-- these are the options for each task -->
+                                <div class="task-options-bottom">
+                                    <span class="material-icons checkbox-for-complete">check_box_outline_blank</span>
+                                    <span class="material-icons edit" >edit</span>
+                                    
+                                    <a href="/delete-tag/?id=<%= to_do_list[i].id %>&trashed=<%= to_do_list[i].trashed %>&tag=<%= to_do_list[i].tag %>"><span class="material-icons delete">delete</span></a>
+
+                                </div>
+                            </div>
+            
+                        
+                        <% } %>
+                    
+
+                    <% } %>
+                    
+                </div>
+
+            <% } %>
+                <!-- this is the trash section here all the trash tasks will be shown in cards form -->
+                <!-- all general operation like edit task, task done check etc will be available in bin too -->
+                <!-- edit and task done are commented for now , there exsistance wil depend upon the  -->
+                <!-- user feedback -->
+                <!-- we are checking if a task has trashed value as true if its true it will be shown else skipped -->
+                <!-- for the finished and unfinished taskswe are using js  -->
+            <div id="trash-shower" class="shower">
+                <% for(let i=to_do_list.length-1;i>=0;i--) { %>
+                    <% if(to_do_list[i].trashed==true){ %> 
+                        <!-- one-to-do is container for each task -->
+                        <!-- tag color div is to show the color dot in each task -->
+                        <!-- it takes data(or innerText()) from abc class ans shows that color-->
+                        <div class="one-to-do">
+                            <span class="abc" style="display: none" ;><%= to_do_list[i].color %></span>
+                            <span class="bcd trash-id" style="display: none" ;><%= to_do_list[i].id %></span>
+                            <div class="task-color"></div>
+                            <div class="task-missed-div">
+                                <span>Missed</span>
+                            </div>
+                            <div class="pin-container">
+                                <span class="material-icons pin">push_pin</span>
+                            </div>
+                            <div class="task-item-container">
+                                <span class="task-item"><%= to_do_list[i].item %></span><br>
+    
+                                <span class="task-massage text-dark-grey"><%= to_do_list[i].massage %></span>
+                            </div>
+                            
+                            <span class="task-value text-dark-grey"><%= to_do_list[i].tag %></span>
+                            <span class="task-date text-dark-grey"><%= to_do_list[i].date %></span>
+
+                            <!-- these are the options for each task -->
+                            <div class="task-options-bottom">
+                                <!-- <span class="material-icons checkbox-for-complete">check_box_outline_blank</span> -->
+                                <!-- <span class="material-icons edit" >edit</span> -->
+                                <a href="/restore-tag/?id=<%= to_do_list[i].id %>&tag=<%= to_do_list[i].tag %>"><span class="material-icons restore">restore_from_trash</span></a>
+                                
+                                <a href="/delete-tag/?id=<%= to_do_list[i].id %>&trashed=<%= to_do_list[i].trashed %>&tag=<%= to_do_list[i].tag %>"><span class="material-icons delete">delete</span></a>
+
+                            </div>
+                        </div>
+        
+                    
+                    <% } %>
+                
+
+                <% } %>
+                
+            </div>
+           
+        </div>
+        <div id="blured-div">
+                
+        </div>
+        <div id="contact-developer">
+            
+            <h2 style="text-align: center;color: #4d7da5;">Contact Me</h2>
+            <div id="whatsapp" class="social">
+                <img src="/images/whatsapp.png" alt="" class="social-image">
+                <a href="https://wa.me/919588169756" target="_blank" class="social-contact" style="color: greenyellow;">9588169756</a>
+            </div>
+            <div id="email" class="social">
+                <img src="/images/mail.png" alt="" class="social-image">
+                <a href="mailto:?Kumarmehlan@gmail.com" target="_blank" class="social-contact" style="color: rgb(255, 87, 87);"> Kumarmehlan</a>
+            </div>
+            <div id="instagram" class="social">
+                <img src="/images/instagram.png" alt="" class="social-image">
+                <a href="https://www.instagram.com/lovekesh100/" target="_blank" class="social-contact" style="color: blueviolet;">lovekesh100</a>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script src="/js/home.js"></script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+HI user,
+This is the readme file for To Do List. This file containe all the features, bugs, future plans
+and all other info. Please go throgh it.
+Note:
+(This is a desktop application. Please don't except it to be Responsive.)
+FEATURES : 
+1. Different tags are available to add to tasks.
+2. Diffrent colours are available to add to tasks.
+3. You can add new tags from (Add tag) button at left bottom.
+4. You change wallpeper for tasks container.
+5. Set text propertise like BOLD, Italics and Underline.
+6. Set text align as left, center or right.
+7. Add a due date to tasks.
+8. Automatic due date is available to (7 days from task add date).
+9. You can add extra massage related to task.
+10. You can edit task after adding it to list.
+11. If task is comlpeted there is a check button available if you don't want to delete it now.
+12. You can pin the task to top.
+13. If due date is near the color dot will start blinking.
+14. If due date is passed and task is not complete, a missed massage will be shown.
+15. Bin is available in case you want to recover task.
+16. A counter will show the total number of tasks and count of each category.
+
+KNOWN BUGS:
+1. The count for tags seems to be broken sometimes. I am trying to find out which time it is 	  broken.
+2. Search is not working currently(I will add it after i learn to make synchronus calls to server).
+2. Please let me know if you find any other bugs. I will really appreciate it.
+
+FEATURE PLANS:
+1. To correct the tag counts.
+2. To add custom wallpaper feature.
+3. Serach tasks.
+4. Multiple user accounts.
+5. Share completed tasks on social media for motivation.
+6. Let user set the importance of any tasks.
+7. Send user email or a browser notification if a task due date is  near.
+8. Let user costomize the automatic due date(currently its 7 days).
+9. let user customize the window width for each section.
+10. You can also suggest some more features.
+
+
+CONTACT ME{
+	You can contact me from 3 dots in left section. otherwise call me or whatsapp me on 	     9588169756. or email at kumarmehlan@gmail.com.
+}
+
+OTHER BUGS THAT YOU MAY ENCOUNTER:
+1. Application uses local storage to store some data. if you local storage is full(very few chances) clearing local storage might resolve some issue.
+2. If your local storage is disabled please enable it get full experience.
+3. express, mongoose or ejs is not installed in current working directory.
+
+
